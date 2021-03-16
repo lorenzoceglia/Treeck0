@@ -25,30 +25,6 @@ class NotificatoreManager
         return static::$_generalManager;
     }
 
-    /**
-     * notify
-     *
-     * Sends notifications to specific users.
-     * The first parameter `$data` is an array with multiple options.
-     *
-     * ### Options
-     * - `users` - An array or int with id's of users who will receive a notification.
-     * - `roles` - An array or int with id's of roles which all users ill receive a notification.
-     * - `template` - The template wich will be used.
-     * - `vars` - The variables used in the template.
-     *
-     * ### Example
-     * ```
-     *  NotificatoreManager::instance()->notify([
-     *      'users' => 1,
-     *      'template' => 'newOrder',
-     *      'vars' => [
-     *          'receiver' => $receiver->name
-     *          'total' => $order->total
-     *      ],
-     *  ]);
-    
-     */
     public function notify($data)
     {
         $model = TableRegistry::getTableLocator()->get('Notifications');
