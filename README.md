@@ -1,4 +1,4 @@
-![alt text](https://art.pixilart.com/64c1d4c28cff103.png =100x20)
+![alt text](https://art.pixilart.com/64c1d4c28cff103.png)
 # Notificator component for CakePHP 3.9
 
 This component is a conversion of the notifier plugin Bakkerij [Git](https://github.com/bakkerij/notifier).
