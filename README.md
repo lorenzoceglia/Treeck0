@@ -1,44 +1,41 @@
-# Component Notificatore per CakePHP 3.9
+# Notificator component for CakePHP 3.9
 
+This component is a conversion of the notifier plugin Bakkerij [Git](https://github.com/bakkerij/notifier).
+Due to his incompatibility with the version 3.9 of CakePhp I decided to do a component-conversion that let him works on the latest versions of the framework.
+This component is a plug and play way to integrate a simple but functional notifications system to your project.
 
-Questo component ti permette di integrare un semplice ma funzionale sistema di notifiche nel tuo sistema.
+## Set-Up
 
-## installazione
+After unpacking the component and the Utility class you just need to set up the database. I made a simple Sql script that "makes your life easier", no migration at all. 
 
-Dopo aver scompattato per bene il component e la classe di Utility ora necessiti di migrare le tabelle del database secondo la struttura del component:
-
-```
-    bin/cake migrations migrate -p Treecko/Notificatore
-```
-
-## Mandare Notifiche
+## Sending notifications
 
 #### Templates
 
-Prima di spedire una notifica, abbiamo bisogno di registrare un template. Segue un esempio sul come aggiungere un template:
+Before sending any notification, we need to register a template. An example about how to add templates:
 
 ```php
-    $notificationManager->addTemplate('newBlog', [
-        'title' => 'New blog by :username',
-        'body' => ':username has posted a new blog named :name'
+    $notificationManager->addTemplate('newPhoto', [
+        'title' => 'New photo by :username',
+        'body' => ':username has posted a new photo with desc: :"desc'
     ]);
 ```
 
 When adding a new template, you have to add a `title` and a `body`. Both are able to contain variables like `:username`
-and `:name`. Later on we will tell more about these variables.
+and `:desc`. Later on we will tell more about these variables.
 
 #### Notify
 
-Now we will be able to send a new notification using our `newBlog` template.
+Now we will be able to send a new notification using our `newPhoto` template.
 
 ```php
     $notificationManager->notify([
         'users' => [1, 2],
         'recipientLists' => ['administrators'],
-        'template' => 'newBlog',
+        'template' => 'newPhoto',
         'vars' => [
-            'username' => 'Bob Mulder',
-            'name' => 'My great new blogpost'
+            'username' => 'Lorenzo Ceglia',
+            'desc' => 'My summer fav place'
         ]
     ]);
 ```
@@ -52,7 +49,7 @@ With the `notify` method we sent a new notification. A list of all attributes:
 - `recipientLists` - This is a string or array with lists of recipients. Further on you can find more about
 RecipientLists.
 - `template` - The template you added, for example `newBlog`.
-- `vars` - Variables to use. In the template `newBlog` we used the variables `username` and `name`. These variables can
+- `vars` - Variables to use. In the template `newPhoto` we used the variables `username` and `desc`. These variables can
 be defined here.
 
 #### Recipient Lists
@@ -160,8 +157,6 @@ The `NotificationManager` is the Manager of the plugin. You can get an instance 
     NotificationManager::instance();
 ```
 
-The `NotificationManager` has the following namespace: `Bakkerij\Notifier\Utility\NotificationManager`.
-
 The manager has the following methods available:
 
 - `notify`
@@ -172,13 +167,11 @@ The manager has the following methods available:
 
 ## Notifier Component
 
-The `Bakkerij/Notifier.Notifier` component can be used in Controllers:
-
 ```php
     public function initialize()
     {
         parent::initialize();
-        $this->loadComponent('Bakkerij/Notifier.Notifier');
+        $this->loadComponent('Notificatore');
     }
 ```
 
@@ -189,8 +182,3 @@ The component has the following methods available:
 - `markAsRead`
 - `notify`
 
-## Keep in touch
-
-If you need some help or got ideas for this plugin, feel free to chat at [Gitter](https://gitter.im/bakkerij/notifier).
-
-Pull Requests are always more than welcome!
