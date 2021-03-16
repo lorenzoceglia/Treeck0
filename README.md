@@ -41,7 +41,7 @@ Now we will be able to send a new notification using our `newPhoto` template.
     ]);
 ```
 
-> Note: You are also able to send notifications via the component: `$this->Notifier->notify()`.
+> Note: You are also able to send notifications via the component: `$this->Notificatore->notify()`.
 
 With the `notify` method we sent a new notification. A list of all attributes:
 
@@ -82,16 +82,16 @@ You can easily retrieve notifications via the `getNotifications` method. Some ex
 
 ```php
     // getting a list of all notifications of the current logged in user
-    $this->Notifier->getNotifications();
+    $this->Notificatore->getNotifications();
 
     // getting a list of all notifications of the user with id 2
-    $this->Notifier->getNotifications(2);
+    $this->Notificatore->getNotifications(2);
     
     // getting a list of all unread notifications
-    $this->Notifier->allNotificationList(2, true);
+    $this->Notificatore->allNotificationList(2, true);
 
     // getting a list of all read notifications
-    $this->Notifier->allNotificationList(2, false);
+    $this->Notificatore->allNotificationList(2, false);
 ```
 
 #### Counts
@@ -100,16 +100,16 @@ Getting counts of read/unread notifications can be done via the `countNotificati
 
 ```php
     // getting a number of all notifications of the current logged in user
-    $this->Notifier->countNotifications();
+    $this->Notificatore->countNotifications();
 
     // getting a number of all notifications of the user with id 2
-    $this->Notifier->countNotifications(2);
+    $this->Notificatore->countNotifications(2);
     
     // getting a number of all unread notifications
-    $this->Notifier->countNotificationList(2, true);
+    $this->Notificatore->countNotificationList(2, true);
 
     // getting a number of all read notifications
-    $this->Notifier->countNotificationList(2, false);
+    $this->Notificatore->countNotificationList(2, false);
 ```
 
 #### Mark as read
@@ -118,10 +118,10 @@ To mark notifications as read, you can use the `markAsRead` method. Some example
 
 ```php
     // mark a single notification as read
-    $this->Notifier->markAsRead(500;
+    $this->Notificatore->markAsRead(500;
 
     // mark all notifications of the given user as read
-    $this->Notifier->markAsRead(null, 2);
+    $this->Notificatore->markAsRead(null, 2);
 ```
 
 #### Notification Entity
@@ -147,7 +147,7 @@ Example:
 You can do something like this to use the notification list in your view:
 
 ```php
-    $this->set('notifications', $this->Notifier->getNotifications());
+    $this->set('notifications', $this->Notificatore->getNotifications());
 ```
 
 ## Notification Manager
